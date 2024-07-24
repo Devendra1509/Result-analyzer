@@ -1,0 +1,334 @@
+  [1m[36mResultData Load (0.2ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mResultData Pluck (0.1ms)[0m  [1m[34mSELECT "result_data"."subject" FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999')[0m
+  [1m[36mResultData Minimum (0.4ms)[0m  [1m[34mSELECT MIN("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "hindi"]]
+  [1m[36mResultData Maximum (0.4ms)[0m  [1m[34mSELECT MAX("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "hindi"]]
+  [1m[36mResultData Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "hindi"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDailyResultStat Create (0.4ms)[0m  [1m[32mINSERT INTO "daily_result_stats" ("date", "subject", "daily_low", "daily_high", "result_count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["date", "2024-07-23"], ["subject", "hindi"], ["daily_low", 45.0], ["daily_high", 96.0], ["result_count", 8], ["created_at", "2024-07-24 11:46:41.598375"], ["updated_at", "2024-07-24 11:46:41.598375"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mResultData Minimum (0.1ms)[0m  [1m[34mSELECT MIN("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "english"]]
+  [1m[36mResultData Maximum (0.1ms)[0m  [1m[34mSELECT MAX("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "english"]]
+  [1m[36mResultData Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "english"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDailyResultStat Create (0.5ms)[0m  [1m[32mINSERT INTO "daily_result_stats" ("date", "subject", "daily_low", "daily_high", "result_count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["date", "2024-07-23"], ["subject", "english"], ["daily_low", 33.0], ["daily_high", 33.0], ["result_count", 1], ["created_at", "2024-07-24 11:46:41.601648"], ["updated_at", "2024-07-24 11:46:41.601648"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDailyResultStat Load (0.2ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mResultData Load (0.3ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+Started POST "/results_data" for ::1 at 2024-07-24 17:20:27 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ResultsDataController#create as */*
+  Parameters: {"subject"=>"Science", "marks"=>"106", "timestamp"=>"2022-04-18 05:46:34.678"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+  [1m[36mResultData Create (2.4ms)[0m  [1m[32mINSERT INTO "result_data" ("subject", "timestamp", "marks", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["subject", "Science"], ["timestamp", "2022-04-18 05:46:34.678000"], ["marks", 106.0], ["created_at", "2024-07-24 11:50:27.820761"], ["updated_at", "2024-07-24 11:50:27.820761"]]
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+Completed 200 OK in 126ms (Views: 0.2ms | ActiveRecord: 5.9ms | Allocations: 100498)
+
+
+Started GET "/result_data" for 127.0.0.1 at 2024-07-24 17:20:35 +0530
+Processing by ResultsDataController#index as HTML
+  [1m[36mResultData Load (1.1ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data"[0m
+  ↳ app/controllers/results_data_controller.rb:15:in `index'
+Completed 200 OK in 24ms (Views: 8.2ms | ActiveRecord: 1.1ms | Allocations: 3820)
+
+
+  [1m[36mDailyResultStat Delete All (7.6ms)[0m  [1m[31mDELETE FROM "daily_result_stats"[0m
+  [1m[36mResultData Pluck (0.4ms)[0m  [1m[34mSELECT "result_data"."subject" FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999')[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:4:in `daily_result'
+  [1m[36mResultData Minimum (0.5ms)[0m  [1m[34mSELECT MIN("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "hindi"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:7:in `block in daily_result'
+  [1m[36mResultData Maximum (0.1ms)[0m  [1m[34mSELECT MAX("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "hindi"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:8:in `block in daily_result'
+  [1m[36mResultData Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "hindi"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:9:in `block in daily_result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mDailyResultStat Create (1.6ms)[0m  [1m[32mINSERT INTO "daily_result_stats" ("date", "subject", "daily_low", "daily_high", "result_count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["date", "2024-07-23"], ["subject", "hindi"], ["daily_low", 45.0], ["daily_high", 96.0], ["result_count", 8], ["created_at", "2024-07-24 11:55:04.616731"], ["updated_at", "2024-07-24 11:55:04.616731"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mResultData Minimum (0.1ms)[0m  [1m[34mSELECT MIN("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "english"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:7:in `block in daily_result'
+  [1m[36mResultData Maximum (0.1ms)[0m  [1m[34mSELECT MAX("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "english"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:8:in `block in daily_result'
+  [1m[36mResultData Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "english"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:9:in `block in daily_result'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mDailyResultStat Create (0.9ms)[0m  [1m[32mINSERT INTO "daily_result_stats" ("date", "subject", "daily_low", "daily_high", "result_count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["date", "2024-07-23"], ["subject", "english"], ["daily_low", 33.0], ["daily_high", 33.0], ["result_count", 1], ["created_at", "2024-07-24 11:55:04.623231"], ["updated_at", "2024-07-24 11:55:04.623231"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mResultData Minimum (0.1ms)[0m  [1m[34mSELECT MIN("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:7:in `block in daily_result'
+  [1m[36mResultData Maximum (0.1ms)[0m  [1m[34mSELECT MAX("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:8:in `block in daily_result'
+  [1m[36mResultData Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:9:in `block in daily_result'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mDailyResultStat Create (0.8ms)[0m  [1m[32mINSERT INTO "daily_result_stats" ("date", "subject", "daily_low", "daily_high", "result_count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["date", "2024-07-23"], ["subject", "Science"], ["daily_low", 106.0], ["daily_high", 106.0], ["result_count", 1], ["created_at", "2024-07-24 11:55:04.628015"], ["updated_at", "2024-07-24 11:55:04.628015"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mDailyResultStat Load (0.4ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+Started POST "/results_data" for ::1 at 2024-07-24 17:28:54 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ResultsDataController#create as */*
+  Parameters: {"subject"=>"Science", "marks"=>"56", "timestamp"=>"2022-04-18 05:53:34.678"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+  [1m[36mResultData Create (1.0ms)[0m  [1m[32mINSERT INTO "result_data" ("subject", "timestamp", "marks", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["subject", "Science"], ["timestamp", "2022-04-18 05:53:34.678000"], ["marks", 56.0], ["created_at", "2024-07-24 11:58:54.585747"], ["updated_at", "2024-07-24 11:58:54.585747"]]
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+Completed 200 OK in 100ms (Views: 0.2ms | ActiveRecord: 3.6ms | Allocations: 100511)
+
+
+Started POST "/results_data" for ::1 at 2024-07-24 17:29:23 +0530
+Processing by ResultsDataController#create as */*
+  Parameters: {"subject"=>"Science", "marks"=>"110", "timestamp"=>"2022-04-18 05:58:34.678"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+  [1m[36mResultData Create (0.9ms)[0m  [1m[32mINSERT INTO "result_data" ("subject", "timestamp", "marks", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["subject", "Science"], ["timestamp", "2022-04-18 05:58:34.678000"], ["marks", 110.0], ["created_at", "2024-07-24 11:59:23.078149"], ["updated_at", "2024-07-24 11:59:23.078149"]]
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 2084)
+
+
+Started POST "/results_data" for ::1 at 2024-07-24 17:29:50 +0530
+Processing by ResultsDataController#create as */*
+  Parameters: {"subject"=>"English", "marks"=>"82", "timestamp"=>"2022-04-18 04:48:44.678"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+  [1m[36mResultData Create (1.0ms)[0m  [1m[32mINSERT INTO "result_data" ("subject", "timestamp", "marks", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["subject", "English"], ["timestamp", "2022-04-18 04:48:44.678000"], ["marks", 82.0], ["created_at", "2024-07-24 11:59:50.180033"], ["updated_at", "2024-07-24 11:59:50.180033"]]
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 2064)
+
+
+Started POST "/results_data" for ::1 at 2024-07-24 17:30:06 +0530
+Processing by ResultsDataController#create as */*
+  Parameters: {"subject"=>"English", "marks"=>"90", "timestamp"=>"2022-04-18 04:51:44.678"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+  [1m[36mResultData Create (0.9ms)[0m  [1m[32mINSERT INTO "result_data" ("subject", "timestamp", "marks", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["subject", "English"], ["timestamp", "2022-04-18 04:51:44.678000"], ["marks", 90.0], ["created_at", "2024-07-24 12:00:06.940500"], ["updated_at", "2024-07-24 12:00:06.940500"]]
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 2082)
+
+
+Started POST "/results_data" for ::1 at 2024-07-24 17:30:23 +0530
+Processing by ResultsDataController#create as */*
+  Parameters: {"subject"=>"English", "marks"=>"51", "timestamp"=>"2022-04-18 05:31:44.678"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+  [1m[36mResultData Create (0.9ms)[0m  [1m[32mINSERT INTO "result_data" ("subject", "timestamp", "marks", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["subject", "English"], ["timestamp", "2022-04-18 05:31:44.678000"], ["marks", 51.0], ["created_at", "2024-07-24 12:00:23.768446"], ["updated_at", "2024-07-24 12:00:23.768446"]]
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 2082)
+
+
+  [1m[36mResultData Load (4.0ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mDailyResultStat Load (0.7ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mDailyResultStat Delete All (1.7ms)[0m  [1m[31mDELETE FROM "daily_result_stats"[0m
+Started GET "/result_data" for 127.0.0.1 at 2024-07-24 17:43:57 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ResultsDataController#index as HTML
+  [1m[36mResultData Load (1.9ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data"[0m
+  ↳ app/controllers/results_data_controller.rb:15:in `index'
+Completed 200 OK in 29ms (Views: 12.4ms | ActiveRecord: 2.4ms | Allocations: 7821)
+
+
+Started GET "/result_data/json" for 127.0.0.1 at 2024-07-24 17:44:11 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/result_data/json"):
+  
+Started GET "/result_data/json" for 127.0.0.1 at 2024-07-24 17:44:41 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/result_data/json"):
+  
+Started GET "/results_data/json" for 127.0.0.1 at 2024-07-24 17:44:53 +0530
+Processing by ResultsDataController#index as HTML
+  [1m[36mResultData Load (0.3ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data"[0m
+  ↳ app/controllers/results_data_controller.rb:15:in `index'
+Completed 200 OK in 19ms (Views: 3.8ms | ActiveRecord: 13.1ms | Allocations: 6337)
+
+
+Started GET "/results_data" for 127.0.0.1 at 2024-07-24 17:45:14 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/results_data"):
+  
+Started GET "/results_data" for 127.0.0.1 at 2024-07-24 17:45:42 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/results_data"):
+  
+Started GET "/result_data" for 127.0.0.1 at 2024-07-24 17:46:00 +0530
+Processing by ResultsDataController#index as HTML
+  [1m[36mResultData Load (0.2ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data"[0m
+  ↳ app/controllers/results_data_controller.rb:15:in `index'
+Completed 200 OK in 11ms (Views: 7.0ms | ActiveRecord: 2.2ms | Allocations: 6267)
+
+
+Started GET "/result_data" for 127.0.0.1 at 2024-07-24 17:46:22 +0530
+Processing by ResultsDataController#index as HTML
+  [1m[36mResultData Load (0.1ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data"[0m
+  ↳ app/controllers/results_data_controller.rb:15:in `index'
+Completed 200 OK in 9ms (Views: 6.0ms | ActiveRecord: 1.8ms | Allocations: 6272)
+
+
+Started GET "/result_data" for 127.0.0.1 at 2024-07-24 17:46:34 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/result_data"):
+  
+Started GET "/result_data" for 127.0.0.1 at 2024-07-24 17:46:47 +0530
+Processing by ResultsDataController#index as HTML
+  [1m[36mResultData Load (0.1ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data"[0m
+  ↳ app/controllers/results_data_controller.rb:15:in `index'
+Completed 200 OK in 9ms (Views: 5.9ms | ActiveRecord: 1.7ms | Allocations: 6328)
+
+
+Started GET "/result_data" for 127.0.0.1 at 2024-07-24 17:47:13 +0530
+Processing by ResultsDataController#index as HTML
+  [1m[36mResultData Load (0.1ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data"[0m
+  ↳ app/controllers/results_data_controller.rb:15:in `index'
+Completed 200 OK in 11ms (Views: 7.6ms | ActiveRecord: 1.4ms | Allocations: 6268)
+
+
+Started GET "/" for 127.0.0.1 at 2024-07-24 17:47:18 +0530
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/rails/.rvm/gems/ruby-3.0.0/gems/railties-7.1.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/rails/.rvm/gems/ruby-3.0.0/gems/railties-7.1.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.8ms | Allocations: 450)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 1511)
+
+
+Started GET "/" for 127.0.0.1 at 2024-07-24 17:48:03 +0530
+Processing by ResultsDataController#index as HTML
+  [1m[36mResultData Load (0.1ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data"[0m
+  ↳ app/controllers/results_data_controller.rb:15:in `index'
+Completed 200 OK in 9ms (Views: 6.2ms | ActiveRecord: 1.5ms | Allocations: 6267)
+
+
+Started GET "/" for 127.0.0.1 at 2024-07-24 17:48:19 +0530
+Processing by ResultsDataController#index as HTML
+  [1m[36mResultData Load (0.1ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data"[0m
+  ↳ app/controllers/results_data_controller.rb:15:in `index'
+Completed 200 OK in 10ms (Views: 6.5ms | ActiveRecord: 1.6ms | Allocations: 6267)
+
+
+Started GET "/" for 127.0.0.1 at 2024-07-24 17:48:23 +0530
+Processing by ResultsDataController#index as HTML
+  [1m[36mResultData Load (0.1ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data"[0m
+  ↳ app/controllers/results_data_controller.rb:15:in `index'
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.1ms | Allocations: 2208)
+
+
+Started GET "/" for 127.0.0.1 at 2024-07-24 17:48:23 +0530
+Processing by ResultsDataController#index as HTML
+  [1m[36mResultData Load (0.3ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data"[0m
+  ↳ app/controllers/results_data_controller.rb:15:in `index'
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.3ms | Allocations: 2207)
+
+
+  [1m[36mDailyResultStat Load (7.5ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mDailyResultStat Load (1.1ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeColumnNameToMonthlyAverage (20240724123616)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeColumnNameToMonthlyAverage (20240724123616)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeColumnName (20240724123923)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeColumnName (20240724123923)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "amonthly_averages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "date" date DEFAULT NULL, "subject" varchar DEFAULT NULL, "monthly_avg_low" decimal DEFAULT NULL, "monthly_avg_high" decimal DEFAULT NULL, "monthly_result_count" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "amonthly_averages" ("id","date","subject","monthly_avg_low","monthly_avg_high","monthly_result_count","created_at","updated_at")
+                     SELECT "id","date","subject","monthly_avg_low","monthly_avg_high","monthly_result_count_used","created_at","updated_at" FROM "monthly_averages"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "monthly_averages"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "monthly_averages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "date" date DEFAULT NULL, "subject" varchar DEFAULT NULL, "monthly_avg_low" decimal DEFAULT NULL, "monthly_avg_high" decimal DEFAULT NULL, "monthly_result_count" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "monthly_averages" ("id","date","subject","monthly_avg_low","monthly_avg_high","monthly_result_count","created_at","updated_at")
+                     SELECT "id","date","subject","monthly_avg_low","monthly_avg_high","monthly_result_count","created_at","updated_at" FROM "amonthly_averages"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "amonthly_averages"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240724123923') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mDailyResultStat Load (0.8ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mDailyResultStat Load (0.3ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mResultData Load (0.5ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mDailyResultStat Load (0.2ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mResultData Pluck (0.1ms)[0m  [1m[34mSELECT "result_data"."subject" FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999')[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:4:in `daily_result'
+  [1m[36mResultData Minimum (0.1ms)[0m  [1m[34mSELECT MIN("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "hindi"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:7:in `block in daily_result'
+  [1m[36mResultData Maximum (0.1ms)[0m  [1m[34mSELECT MAX("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "hindi"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:8:in `block in daily_result'
+  [1m[36mResultData Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "hindi"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:9:in `block in daily_result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mDailyResultStat Create (1.0ms)[0m  [1m[32mINSERT INTO "daily_result_stats" ("date", "subject", "daily_low", "daily_high", "result_count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["date", "2024-07-23"], ["subject", "hindi"], ["daily_low", 45.0], ["daily_high", 96.0], ["result_count", 8], ["created_at", "2024-07-24 12:47:03.597661"], ["updated_at", "2024-07-24 12:47:03.597661"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mResultData Minimum (0.1ms)[0m  [1m[34mSELECT MIN("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "english"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:7:in `block in daily_result'
+  [1m[36mResultData Maximum (0.1ms)[0m  [1m[34mSELECT MAX("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "english"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:8:in `block in daily_result'
+  [1m[36mResultData Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "english"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:9:in `block in daily_result'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mDailyResultStat Create (0.8ms)[0m  [1m[32mINSERT INTO "daily_result_stats" ("date", "subject", "daily_low", "daily_high", "result_count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["date", "2024-07-23"], ["subject", "english"], ["daily_low", 33.0], ["daily_high", 33.0], ["result_count", 1], ["created_at", "2024-07-24 12:47:03.603066"], ["updated_at", "2024-07-24 12:47:03.603066"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mResultData Minimum (0.1ms)[0m  [1m[34mSELECT MIN("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:7:in `block in daily_result'
+  [1m[36mResultData Maximum (0.1ms)[0m  [1m[34mSELECT MAX("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:8:in `block in daily_result'
+  [1m[36mResultData Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:9:in `block in daily_result'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mDailyResultStat Create (0.8ms)[0m  [1m[32mINSERT INTO "daily_result_stats" ("date", "subject", "daily_low", "daily_high", "result_count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["date", "2024-07-23"], ["subject", "Science"], ["daily_low", 56.0], ["daily_high", 110.0], ["result_count", 3], ["created_at", "2024-07-24 12:47:03.607375"], ["updated_at", "2024-07-24 12:47:03.607375"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mResultData Minimum (0.1ms)[0m  [1m[34mSELECT MIN("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "English"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:7:in `block in daily_result'
+  [1m[36mResultData Maximum (0.1ms)[0m  [1m[34mSELECT MAX("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "English"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:8:in `block in daily_result'
+  [1m[36mResultData Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "result_data" WHERE (created_at >= '2024-07-23 23:59:59.999999' AND created_at < '2024-07-24 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "English"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:9:in `block in daily_result'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mDailyResultStat Create (0.8ms)[0m  [1m[32mINSERT INTO "daily_result_stats" ("date", "subject", "daily_low", "daily_high", "result_count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["date", "2024-07-23"], ["subject", "English"], ["daily_low", 51.0], ["daily_high", 90.0], ["result_count", 3], ["created_at", "2024-07-24 12:47:03.611666"], ["updated_at", "2024-07-24 12:47:03.611666"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:10:in `block in daily_result'
+  [1m[36mDailyResultStat Load (0.1ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mResultData Load (0.4ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mDailyResultStat Load (0.5ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mDailyResultStat Load (0.2ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
