@@ -7,6 +7,7 @@ class DailyResultStatsCalculator
       daily_low = subject_results.minimum(:marks)
       daily_high = subject_results.maximum(:marks)
       result_count = subject_results.count
+
       DailyResultStat.create!(
         date: Date.yesterday,
         subject: subject,
@@ -15,5 +16,11 @@ class DailyResultStatsCalculator
         result_count: result_count
       )
     end
+   MonthlyAverage.monthly_result if third_wednesday_week?
+  end
+  private
+  def third_wednesday_week?
+    today = Date.today
+    today.monday? && (today.day + 2) / 7 == 3
   end
 end

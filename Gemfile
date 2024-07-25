@@ -68,3 +68,8 @@ end
 
 
 gem 'whenever', require: false
+
+group :development, :test do 
+  gem 'rspec-rails' 
+end
+
