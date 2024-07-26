@@ -24,6 +24,5 @@ def self.monthly_result
       )
     end
   end
-
- end
+end
 

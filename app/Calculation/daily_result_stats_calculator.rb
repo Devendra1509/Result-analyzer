@@ -18,6 +18,7 @@ class DailyResultStatsCalculator
     end
    MonthlyAverage.monthly_result if third_wednesday_week?
   end
+  
   private
   def third_wednesday_week?
     today = Date.today
