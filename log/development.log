@@ -101,3 +101,44 @@ Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 2082)
   [1m[36mResultData Load (0.1ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data" WHERE "result_data"."subject" = ? LIMIT ?[0m  [["subject", "Science"], ["LIMIT", 1]]
   [1m[36mResultData Load (0.3ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
   [1m[36mResultData Load (0.2ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data" WHERE "result_data"."subject" = ? LIMIT ?[0m  [["subject", "hindi"], ["LIMIT", 1]]
+  [1m[36mMonthlyAverage Load (10.6ms)[0m  [1m[34mSELECT "monthly_averages".* FROM "monthly_averages" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mDailyResultStat Load (0.3ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mDailyResultStat Load (0.1ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" WHERE "daily_result_stats"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mDailyResultStat Load (0.4ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" WHERE "daily_result_stats"."date" = ? LIMIT ?[0m  [["date", -2006], ["LIMIT", 1]]
+  [1m[36mDailyResultStat Load (0.2ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" WHERE "daily_result_stats"."date" = ? LIMIT ?[0m  [["date", "2024-07-25"], ["LIMIT", 1]]
+  [1m[36mResultData Pluck (0.6ms)[0m  [1m[34mSELECT "result_data"."subject" FROM "result_data" WHERE (created_at >= '2024-07-25 23:59:59.999999' AND created_at < '2024-07-26 23:59:59.999999')[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:4:in `daily_result'
+  [1m[36mResultData Minimum (0.5ms)[0m  [1m[34mSELECT MIN("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-25 23:59:59.999999' AND created_at < '2024-07-26 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:7:in `block in daily_result'
+  [1m[36mResultData Maximum (0.1ms)[0m  [1m[34mSELECT MAX("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-25 23:59:59.999999' AND created_at < '2024-07-26 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:8:in `block in daily_result'
+  [1m[36mResultData Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "result_data" WHERE (created_at >= '2024-07-25 23:59:59.999999' AND created_at < '2024-07-26 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:9:in `block in daily_result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:11:in `block in daily_result'
+  [1m[36mDailyResultStat Create (1.7ms)[0m  [1m[32mINSERT INTO "daily_result_stats" ("date", "subject", "daily_low", "daily_high", "result_count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["date", "2024-07-25"], ["subject", "Science"], ["daily_low", 45.0], ["daily_high", 48.0], ["result_count", 4], ["created_at", "2024-07-26 12:35:03.589518"], ["updated_at", "2024-07-26 12:35:03.589518"]]
+  ↳ app/Calculation/daily_result_stats_calculator.rb:11:in `block in daily_result'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/Calculation/daily_result_stats_calculator.rb:11:in `block in daily_result'
+  [1m[36mDailyResultStat Load (0.4ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mMonthlyAverage Load (0.7ms)[0m  [1m[34mSELECT "monthly_averages".* FROM "monthly_averages" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mDailyResultStat Load (0.2ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" WHERE "daily_result_stats"."date" = ? LIMIT ?[0m  [["date", "2024-07-25"], ["LIMIT", 1]]
+  [1m[36mDailyResultStat Load (0.2ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" WHERE "daily_result_stats"."date" = ? LIMIT ?[0m  [["date", "2024-07-25"], ["LIMIT", 1]]
+  [1m[36mDailyResultStat Load (0.1ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" WHERE "daily_result_stats"."date" = ? LIMIT ?[0m  [["date", "2024-07-25"], ["LIMIT", 1]]
+  [1m[36mDailyResultStat Load (0.1ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" WHERE "daily_result_stats"."date" = ? LIMIT ?[0m  [["date", "2024-07-25"], ["LIMIT", 1]]
+  [1m[36mDailyResultStat Load (0.2ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" WHERE "daily_result_stats"."date" = ? LIMIT ?[0m  [["date", "2024-07-25"], ["LIMIT", 1]]
+  [1m[36mResultData Minimum (0.5ms)[0m  [1m[34mSELECT MIN("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-25 23:59:59.999999' AND created_at < '2024-07-26 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  [1m[36mResultData Maximum (0.3ms)[0m  [1m[34mSELECT MAX("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-25 23:59:59.999999' AND created_at < '2024-07-26 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  [1m[36mResultData Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "result_data" WHERE (created_at >= '2024-07-25 23:59:59.999999' AND created_at < '2024-07-26 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  [1m[36mResultData Minimum (0.1ms)[0m  [1m[34mSELECT MIN("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-25 23:59:59.999999' AND created_at < '2024-07-26 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  [1m[36mResultData Maximum (0.1ms)[0m  [1m[34mSELECT MAX("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-25 23:59:59.999999' AND created_at < '2024-07-26 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  [1m[36mResultData Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "result_data" WHERE (created_at >= '2024-07-25 23:59:59.999999' AND created_at < '2024-07-26 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  [1m[36mResultData Minimum (0.1ms)[0m  [1m[34mSELECT MIN("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-25 23:59:59.999999' AND created_at < '2024-07-26 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  [1m[36mResultData Maximum (0.1ms)[0m  [1m[34mSELECT MAX("result_data"."marks") FROM "result_data" WHERE (created_at >= '2024-07-25 23:59:59.999999' AND created_at < '2024-07-26 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  [1m[36mResultData Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "result_data" WHERE (created_at >= '2024-07-25 23:59:59.999999' AND created_at < '2024-07-26 23:59:59.999999') AND "result_data"."subject" = ?[0m  [["subject", "Science"]]
+  [1m[36mResultData Load (0.3ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mResultData Load (0.3ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data" ORDER BY "result_data"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mResultData Load (0.3ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data"[0m
+  [1m[36mDailyResultStat Load (0.3ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mResultData Load (1.2ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mDailyResultStat Load (0.1ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]

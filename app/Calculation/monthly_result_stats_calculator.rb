@@ -5,10 +5,10 @@ def self.monthly_result
     today = Date.today
     subjects.each do |subject|
       results = DailyResultStat.where(subject: subject).order(date: :desc)
-      days_data = []
+     days_data = []
       total_count = 0
-      results.each do |result|
-        days_data << result
+       results.each do |result|
+       days_data << result
         total_count = total_count + result.result_count
         break if total_count >= 200 && days_data.size >= 5
       end
