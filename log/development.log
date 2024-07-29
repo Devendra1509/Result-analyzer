@@ -142,3 +142,11 @@ Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 2082)
   [1m[36mDailyResultStat Load (0.3ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
   [1m[36mResultData Load (1.2ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
   [1m[36mDailyResultStat Load (0.1ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/" for 127.0.0.1 at 2024-07-29 11:29:26 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ResultsDataController#index as HTML
+  [1m[36mResultData Load (0.2ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data"[0m
+  ↳ app/controllers/results_data_controller.rb:15:in `index'
+Completed 200 OK in 66ms (Views: 37.3ms | ActiveRecord: 2.0ms | Allocations: 103646)
+
+

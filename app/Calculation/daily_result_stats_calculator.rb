@@ -22,6 +22,6 @@ class DailyResultStatsCalculator
   private
   def third_wednesday_week?
     today = Date.today
-    today.monday? && (today.day + 2) / 7 == 3
+    today.monday? && (today.day + 2) / 7 == "wednesday"
   end
 end
