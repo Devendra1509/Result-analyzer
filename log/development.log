@@ -150,3 +150,7 @@ Processing by ResultsDataController#index as HTML
 Completed 200 OK in 66ms (Views: 37.3ms | ActiveRecord: 2.0ms | Allocations: 103646)
 
 
+  [1m[36mDailyResultStat Load (0.2ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" WHERE "daily_result_stats"."subject" = ? LIMIT ?[0m  [["subject", "Science"], ["LIMIT", 1]]
+  [1m[36mDailyResultStat Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "daily_result_stats"[0m
+  [1m[36mDailyResultStat Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "daily_result_stats"[0m
+  [1m[36mDailyResultStat Load (0.2ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" WHERE "daily_result_stats"."subject" = ? LIMIT ?[0m  [["subject", "Science"], ["LIMIT", 1]]

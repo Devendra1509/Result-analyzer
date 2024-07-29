@@ -16,12 +16,8 @@ class DailyResultStatsCalculator
         result_count: result_count
       )
     end
-   MonthlyAverage.monthly_result if third_wednesday_week?
+   
+  end
   end
   
-  private
-  def third_wednesday_week?
-    today = Date.today
-    today.monday? && (today.day + 2) / 7 == "wednesday"
-  end
-end
+ 
