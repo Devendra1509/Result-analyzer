@@ -6,7 +6,7 @@ class ResultsDataController < ApplicationController
 		if result.save
 			render json: {message:'successful data enter'}
 		else 
-			render json: {error: 'result.errors.full_messages'}
+			render json: {error: result.errors.full_messages}
 	    end
 	end
 

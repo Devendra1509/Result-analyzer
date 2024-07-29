@@ -1,6 +1,7 @@
 class DailyResultStatsCalculator
   def self.daily_result
-    results = ResultData.where('created_at >= ? AND created_at < ?', Date.yesterday.end_of_day, Date.today.end_of_day)
+    #results = ResultData.where('created_at >= ? AND created_at < ?', Date.yesterday.end_of_day + 6.hours, Date.today.end_of_day + 6.hours)
+    results = ResultData.where('created_at >= ? AND created_at < ?', "18:00".to_datetime.yesterday, "18:00".to_datetime)
     subjects = results.pluck(:subject).uniq
     subjects.each do |subject|
       subject_results = results.where(subject: subject)
@@ -16,8 +17,8 @@ class DailyResultStatsCalculator
         result_count: result_count
       )
     end
-   
+    
   end
-  end
+end
   
  

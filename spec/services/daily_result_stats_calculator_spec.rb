@@ -7,6 +7,7 @@ RSpec.describe DailyResultStatsCalculator, type: :service do
       create(:result_data, subject: 'Science', timestamp: yesterday.beginning_of_day + 4.hours, marks: 90.75)
       create(:result_data, subject: 'Math', timestamp: yesterday.beginning_of_day + 6.hours, marks: 78.5)
       create(:result_data, subject: 'Math', timestamp: yesterday.beginning_of_day + 8.hours, marks: 88.0)
+      create(:result_data, subject: 'Science',timestamp: yesterday.beginning_of_day + 10.hours, marks:86)
       DailyResultStatsCalculator.daily_result
     end
 
@@ -18,7 +19,7 @@ RSpec.describe DailyResultStatsCalculator, type: :service do
       science_stat = DailyResultStat.find_by(subject: 'Science')
       expect(science_stat.daily_low).to eq(85.25)
       expect(science_stat.daily_high).to eq(90.75)
-      expect(science_stat.result_count).to eq(2)
+      expect(science_stat.result_count).to eq(3)
     end
 
     it 'calculates the correct daily low and high marks for Math' do
@@ -27,41 +28,6 @@ RSpec.describe DailyResultStatsCalculator, type: :service do
       expect(math_stat.daily_high).to eq(88.0)
       expect(math_stat.result_count).to eq(2)
     end
-  
-
-
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

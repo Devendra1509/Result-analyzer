@@ -25,6 +25,6 @@ every 1.day, at: '06:05 pm' do
   runner "DailyResultStatsCalculator.daily_result"
 end
 
-# every :monday, at: '6:00 pm' do
-#   runner "MonthlyResultStatsCalculator.monthly_result"  
-# end
+every :monday, at: '6:00 pm' do
+  runner "MonthlyResultStatsCalculator.monthly_result"  
+end

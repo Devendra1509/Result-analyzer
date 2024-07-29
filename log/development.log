@@ -154,3 +154,51 @@ Completed 200 OK in 66ms (Views: 37.3ms | ActiveRecord: 2.0ms | Allocations: 103
   [1m[36mDailyResultStat Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "daily_result_stats"[0m
   [1m[36mDailyResultStat Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "daily_result_stats"[0m
   [1m[36mDailyResultStat Load (0.2ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" WHERE "daily_result_stats"."subject" = ? LIMIT ?[0m  [["subject", "Science"], ["LIMIT", 1]]
+Started GET "/" for 127.0.0.1 at 2024-07-29 18:04:27 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ResultsDataController#index as HTML
+  [1m[36mResultData Load (0.2ms)[0m  [1m[34mSELECT "result_data".* FROM "result_data"[0m
+  ↳ app/controllers/results_data_controller.rb:15:in `index'
+Completed 200 OK in 81ms (Views: 59.0ms | ActiveRecord: 2.1ms | Allocations: 103643)
+
+
+Started POST "/results_data" for ::1 at 2024-07-29 18:05:24 +0530
+Processing by ResultsDataController#create as */*
+  Parameters: {"subject"=>"Science", "marks"=>"65", "timestamp"=>"2022-04-14 05:31:44.678"}
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+  [1m[36mResultData Create (6.4ms)[0m  [1m[32mINSERT INTO "result_data" ("subject", "timestamp", "marks", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["subject", "Science"], ["timestamp", "2022-04-14 05:31:44.678000"], ["marks", 65.0], ["created_at", "2024-07-29 12:35:24.294380"], ["updated_at", "2024-07-29 12:35:24.294380"]]
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/results_data_controller.rb:6:in `create'
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 15.2ms | Allocations: 3243)
+
+
+Started POST "/results_data" for ::1 at 2024-07-29 18:05:52 +0530
+Processing by ResultsDataController#create as */*
+  Parameters: {"text/plain"=>[""], "marks"=>"65", "timestamp"=>"2022-04-14 05:31:44.678"}
+[31mUnpermitted parameter: :text/plain. Context: { controller: ResultsDataController, action: create, request: #<ActionDispatch::Request:0x00007ff80c7e03b8>, params: {"text/plain"=>[""], "marks"=>"65", "timestamp"=>"2022-04-14 05:31:44.678", "controller"=>"results_data", "action"=>"create"} }[0m
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 948)
+
+
+Started POST "/results_data" for ::1 at 2024-07-29 18:11:21 +0530
+Processing by ResultsDataController#create as */*
+  Parameters: {"text/plain"=>[""], "marks"=>"65", "timestamp"=>"2022-04-14 05:31:44.678"}
+[31mUnpermitted parameter: :text/plain. Context: { controller: ResultsDataController, action: create, request: #<ActionDispatch::Request:0x00007ff7fca447b8>, params: {"text/plain"=>[""], "marks"=>"65", "timestamp"=>"2022-04-14 05:31:44.678", "controller"=>"results_data", "action"=>"create"} }[0m
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 1.5ms | Allocations: 6086)
+
+
+Started POST "/results_data" for ::1 at 2024-07-29 18:20:43 +0530
+Processing by ResultsDataController#create as */*
+  Parameters: {"text/plain"=>[""], "marks"=>"", "timestamp"=>"2022-04-14 05:31:44.678"}
+[31mUnpermitted parameter: :text/plain. Context: { controller: ResultsDataController, action: create, request: #<ActionDispatch::Request:0x00007ff7fcd572e8>, params: {"text/plain"=>[""], "marks"=>"", "timestamp"=>"2022-04-14 05:31:44.678", "controller"=>"results_data", "action"=>"create"} }[0m
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 4818)
+
+
+Started POST "/results_data" for ::1 at 2024-07-29 18:20:54 +0530
+Processing by ResultsDataController#create as */*
+  Parameters: {"text/plain"=>[""], "marks"=>""}
+[31mUnpermitted parameter: :text/plain. Context: { controller: ResultsDataController, action: create, request: #<ActionDispatch::Request:0x00007ff80cf5d5f0>, params: {"text/plain"=>[""], "marks"=>"", "controller"=>"results_data", "action"=>"create"} }[0m
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1779)
+
+
